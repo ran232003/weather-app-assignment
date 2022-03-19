@@ -2,3 +2,16 @@
     display: flex;
   justify-content: space-between;
 }
+.centerText{
+    margin: auto;
+  width: 30%;
+  border: 3px solid green;
+  padding: 10px; 
+  text-align: center;
+}
+@media screen and (max-width: 600px) {
+    .centerText {
+        width: 60%;
+        text-align: center;
+    }
+  }

@@ -1,4 +1,4 @@
-const myObj = [
+export const myObj = [
     {
     "LocalObservationDateTime": "2022-03-18T18:18:00+02:00",
     "EpochTime": 1647620280,
