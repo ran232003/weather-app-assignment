@@ -12,8 +12,8 @@ const WeatherCard = (props)=>{
   const [image, setImage] = useState(null)
     date = new Date(date);
     const day = days[date.getDay()];
-    let fileName = icon + ".svg"
-   
+    let fileName = icon + ".svg";
+    console.log(fileName);
     const fetchImage = async () => {
         try {
             const response = await import(`../myIcons/${fileName}`) // change relative path to suit your needs
@@ -26,7 +26,7 @@ const WeatherCard = (props)=>{
         }
     }
     fetchImage();
-    console.log(image)
+   
     return (
     <div className="WeatherCard">
        <Card sx={{ maxWidth: 145 }}>

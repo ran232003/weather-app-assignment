@@ -5,6 +5,7 @@ import "./Card.css"
 import WeatherHeader from "./WeatherHeader";
 import { useSelector } from "react-redux";
 import WeatherList from "./WeatherList";
+import HorizontalScroll from 'react-scroll-horizontal'
 const Card = ()=>{
     const weather = useSelector((state)=>{
         return state.weather
@@ -20,7 +21,13 @@ const Card = ()=>{
                 icon = {weather.currentWeather.WeatherIcon}
                 temperature = {weather.currentWeather.Temperature.Metric.Value}
                 />
-             <FavoriteComponent/>
+             <FavoriteComponent
+              header = {weather.currentWeather.WeatherText}
+              city = "Tel Aviv"
+              date = {weather.currentWeather.LocalObservationDateTime}
+              icon = {weather.currentWeather.WeatherIcon}
+              temperature = {weather.currentWeather.Temperature.Metric.Value}
+             />
              
              </div>
              <div className="centerText">
@@ -29,11 +36,12 @@ const Card = ()=>{
              <div className="list">
                <ul className="list2">
                    {weather.weatherOfTheWeek.DailyForecasts.map((obj)=>{
+                      // debugger
                        return(
                        <li className="list-item">
                            <WeatherCard
                            header = {obj.WeatherText}
-                           city = "Tel Aviv"
+                           city = ""
                            date = {obj.Date}
                            icon = {obj.Day.Icon}
                            temperature = {obj.Temperature.Maximum.Value}                          

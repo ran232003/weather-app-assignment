@@ -19,7 +19,10 @@
     margin-top: 70px;
     border-color: black;
     border-style: solid;
+    margin-bottom: 10px;
+ 
   }
+
   @media screen and (max-width: 600px) {
     .searchBar {
         width: 70%;
