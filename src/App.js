@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Favorites from './pages/Favorites';
 import {myObj} from "./dummyCurrentWeather";
-import { Provider, useDispatch } from 'react-redux';
+import {weatherList} from "./weatherList"
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import store from './store';
 import { useEffect } from 'react';
 import { weatherActions } from './store/weatherSlice';
@@ -13,13 +14,20 @@ import { weatherActions } from './store/weatherSlice';
 //6jAYLwBpvKKB9w73VnO2DEAN2sPyGGpL
 function App() {
   const dispatch = useDispatch();
-  console.log("ssss",myObj)
-  useEffect(()=>{
+  const weather = useSelector((state)=>{
+    return state.weather;
+  })
+  
+  const updateWeather = ()=>{
     const obj = myObj[0];
-    console.log(obj)
-    dispatch(weatherActions.setCurrentWeather(obj))
-    console.log("s",obj.WeatherIcon)
-  },[])
+    dispatch(weatherActions.setCurrentWeather(obj));
+    dispatch(weatherActions.setWeatherOfTheWeek(weatherList))
+  }
+  useEffect(()=>{
+   console.log("effect")
+    //updateWeather()
+  },[weather])
+  updateWeather()
   return (
       <div>  
     <NavigationBar/>

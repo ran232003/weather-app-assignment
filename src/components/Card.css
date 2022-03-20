@@ -15,3 +15,22 @@
         text-align: center;
     }
   }
+  .list2{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid green;
+    list-style-type: none;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .list-item{
+    margin-left: 50px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .list-item {
+        margin-left: 10px;
+        
+    }
+    
+  }

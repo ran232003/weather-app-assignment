@@ -1,8 +1,8 @@
 .searchBar{
-    margin: auto;
-  width: 30%;
- 
-  padding: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 .auto{
     width: 100%;
@@ -23,5 +23,6 @@
   @media screen and (max-width: 600px) {
     .searchBar {
         width: 70%;
+        margin: auto;
     }
   }
