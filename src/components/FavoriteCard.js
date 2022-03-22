@@ -19,10 +19,10 @@ console.log("in fav",weather.favorites)
                    {weather.favorites.map((obj)=>{
                      console.log(obj)
                        return(
-                       <li onClick = {handleClick} className="list-item2" >
+                       <li className="list-item2" >
                            <WeatherCard                   
-                           key={obj.currentKey}
-                           click = {handleClick}
+                           currentKey={obj.currentKey}
+                           
                            header = {obj.header}
                            city = {obj.city}
                            date = {obj.date}

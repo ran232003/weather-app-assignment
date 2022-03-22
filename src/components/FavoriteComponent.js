@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import {AiFillHeart} from "react-icons/ai"; 
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,9 @@ const FavoriteComponent = (props)=>{
     //     return state.weather.favorites;
     // })
 
-    
+    const weather = useSelector((state)=>{
+      return  state.weather.isFavorite;
+    })
     const addToFavorite = (event)=>{
        
         const obj = {header,temperature,city,date,icon,currentKey}
@@ -31,7 +33,11 @@ const FavoriteComponent = (props)=>{
 
 
     }
+    console.log(favorite)
     console.log(iconState)
+    useEffect(()=>{
+        setIconState(favorite)
+    },[favorite])
     return(
         <div>
             <div className="favDiv">

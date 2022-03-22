@@ -5,7 +5,7 @@ import "./HomePage.css"
 import FavoriteComponent from "../components/FavoriteComponent";
 import Card from "../components/Card";
 import Input from "../components/Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { weatherActions } from "../store/weatherSlice";
 import { apiKey } from "../api";
 const HomePage = ()=>{
@@ -82,7 +82,13 @@ const HomePage = ()=>{
           dispatch(weatherActions.setKey(code));
           dispatch(weatherActions.setCity(name))
        }
-       geoLocation();
+       const weather = useSelector((state)=>{
+           return state.weather;
+       })
+       if(weather.currentKey === 0){
+        geoLocation();
+       }
+       
        
 useEffect(()=>{
    // geoLocation();

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FavoriteComponent from "./FavoriteComponent";
 import WeatherCard from "./WeatherCard";
 import "./Card.css"
@@ -12,6 +12,7 @@ const Card = ()=>{
     const weather = useSelector((state)=>{
         return state.weather
     })
+    const[favorite,setFavorite] = useState(false)
     const dispatch = useDispatch()
     const checkFavorite = ()=>{
         let obj = weather.favorites.find((location)=>{
@@ -21,10 +22,12 @@ const Card = ()=>{
         if(obj){
             console.log("in card if",obj)
             dispatch(weatherActions.changeFavorite(true))
+            setFavorite(true);
         }
         else{
             dispatch(weatherActions.changeFavorite(false))
             console.log("in card else",obj)
+            setFavorite(false);
         }
 
     }

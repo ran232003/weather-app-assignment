@@ -20,9 +20,11 @@ const Input = (props)=>{
            setCityArray(cities)
         }  
         const getInput = async(event,value)=>{
+
             let {lable,id} = value;
             dispatch(weatherActions.setKey(id));
             dispatch(weatherActions.setCity(lable))
+            dispatch(weatherActions.checkFavorite(id))
             const res2 = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=${apiKey}&language=en-us&details=true`)
     const data2 =  await res2.json();
     console.log("sss",data2[0]);
