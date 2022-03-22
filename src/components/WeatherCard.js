@@ -4,7 +4,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import logo from "../1.svg"
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { days } from "../days";
 const WeatherCard = (props)=>{
@@ -31,11 +30,12 @@ const WeatherCard = (props)=>{
     <div className="WeatherCard">
        <Card sx={{ maxWidth: 145 }}>
       <CardActionArea>
-        <CardMedia
+        <CardMedia className="WeatherCard"
           component="img"
-          height="85"
+          height="115"
           image={image}
           alt="image"
+          
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">

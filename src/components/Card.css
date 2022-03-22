@@ -5,9 +5,17 @@
 .centerText{
     margin: auto;
   width: 30%;
-  border: 3px solid green;
+  /* border: 3px solid green; */
   padding: 10px; 
   text-align: center;
+}
+.center-spin{
+  
+    margin: auto;
+    width: 50%;
+   
+    padding: 10px;
+ 
 }
 @media screen and (max-width: 600px) {
     .centerText {
@@ -26,20 +34,22 @@
   }
   .list-item{
     margin-left: 50px;
+    width: 150px;
+    
   }
   .list{
     /* overflow-y: scroll; */
-    margin-top: 10px;
+    margin-top: 40px;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1046px) {
     .list-item {
-        margin-left: 10px;
+        margin-left: 20px;
         
     }
     .list{
       overflow-y: scroll;
-      margin-top: 10px;
+      margin-top: 20px;
     }
     
   }

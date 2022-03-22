@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const weatherSlice = createSlice({
     name:"weather",
-    initialState:{currentWeather:{},weatherOfTheWeek:{},favorites:[],currentKey:0},
+    initialState:{currentWeather:{},weatherOfTheWeek:{},favorites:[],currentKey:0,city:"",isFavorite:false},
     reducers:{
         setCurrentWeather(state,action){
             state.currentWeather = action.payload;
@@ -11,8 +11,18 @@ const weatherSlice = createSlice({
         setWeatherOfTheWeek(state,action){
             state.weatherOfTheWeek = action.payload;
         },
-        addToFavorites(state,paload){
-            state.favorites.push(paload);
+        addToFavorites(state,action){
+            state.favorites.push(action.payload);
+        },
+        setCity(state,action){
+            state.city =action.payload;
+        },
+        setKey(state,action){
+            state.currentKey =action.payload;
+        },
+        changeFavorite(state,action){
+            console.log("in slice",action.payload)
+            state.isFavorite = action.payload;
         }
         
     }

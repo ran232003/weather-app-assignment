@@ -1,6 +1,6 @@
 .favDiv{
     width: 10%;
-    border: 3px solid green;
+     
     float: right;
   width: 200px;
   padding: 10px;
@@ -9,12 +9,25 @@
 
 .icon:hover{
     color: red; 
+    
 }
-.icon{
+.icon.green:hover{
+    color: red; 
+    
+}
+.icon.green{
     size: 4rem;
     color:#66cc99;
     margin-right: 5px;
-    
+    float: right;
+    cursor: pointer;
+}
+.icon.red{
+    size: 4rem;
+    color: red;
+    margin-right: 5px;
+    float: right;
+    cursor: pointer;
 }
 .btn{   
     background-color:#66cc99;   

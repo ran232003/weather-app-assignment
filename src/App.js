@@ -46,6 +46,7 @@ let code;
     console.log("sss",data2[0]);
      dispatch(weatherActions.setCurrentWeather(data2[0]));
      dispatch(weatherActions.setWeatherOfTheWeek(weatherList))
+     dispatch(weatherActions.setCity(name))
   }
    
  
@@ -56,9 +57,9 @@ console.log("weather");
   return (
       <div>  
     <NavigationBar/>
-    <GetLocation
+    {/* <GetLocation
     checkLocation = {checkLocation}
-    />
+    /> */}
     <Routes>
       <Route path = "/" element = {<HomePage/>}>
 
