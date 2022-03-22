@@ -1,36 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import {AiFillHeart} from "react-icons/ai"; 
 import { useDispatch, useSelector } from "react-redux";
 import { weatherActions } from "../store/weatherSlice";
 import "./FavoriteComponent.css"
 const FavoriteComponent = (props)=>{
-    let  {header,temperature,city,date,icon} = props;
+ 
+    let  {header,temperature,city,date,icon,currentKey,favorite} = props;
     const dispatch = useDispatch();
-    const favoriteArray = useSelector((state)=>{
-        return state.weather.favorites;
-    })
+    const[iconState,setIconState] = useState(favorite)
+    // const favoriteArray = useSelector((state)=>{
+    //     return state.weather.favorites;
+    // })
 
-    const checkFavorite = ()=>{
-
-    }
+    
     const addToFavorite = (event)=>{
-        console.log("here")
-        let id = localStorage.getItem("id");
-        console.log(id)
-        if(!id){
-            id = 0;
+       
+        const obj = {header,temperature,city,date,icon,currentKey}
+        console.log("obj",obj);
+        if(iconState){
+
         }
-        id = id + 1
-        const obj = {header,temperature,city,date,icon,id}
-        dispatch(weatherActions.addToFavorites(obj))
+        else{
+            dispatch(weatherActions.addToFavorites(obj))
+            dispatch(weatherActions.changeFavorite(true))
+        setIconState(true);    
+        }
+
+       
+
 
     }
+    console.log(iconState)
     return(
         <div>
             <div className="favDiv">
-            <AiFillHeart size= "2rem" className="icon" onClick = {addToFavorite}/>
-            <Button className="btn">Favorite</Button>
+            <AiFillHeart size= "4rem" className={iconState === false?"icon green":"icon red"} onClick = {addToFavorite}/>
+            
         
         </div>
         </div>
