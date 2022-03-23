@@ -7,9 +7,9 @@ const weather = useSelector((state)=>{
    return state.weather;
 }) 
 const handleClick = (event)=>{
-    console.log("ss", event.target)
+    
 }
-console.log("in fav",weather.favorites)
+
     return(
         <div>
             <div className="scroll">
@@ -17,12 +17,13 @@ console.log("in fav",weather.favorites)
             <div className="list">
                <ul className="list2">
                    {weather.favorites.map((obj)=>{
-                     console.log(obj)
+                   
                        return(
                        <li className="list-item2" >
-                           <WeatherCard                   
+                           <WeatherCard 
+                           key = {obj.currentKey}                  
                            currentKey={obj.currentKey}
-                           
+                           fromFavorites = {true}
                            header = {obj.header}
                            city = {obj.city}
                            date = {obj.date}

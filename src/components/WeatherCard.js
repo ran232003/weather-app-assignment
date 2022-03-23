@@ -10,8 +10,10 @@ import { weatherActions } from "../store/weatherSlice";
 import { apiKey } from "../api";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {MdOutlineRemoveCircleOutline} from "react-icons/md"
+
 const WeatherCard = (props)=>{
-  let  {header,temperature,city,date,icon,currentKey} = props;
+  let  {header,temperature,city,date,icon,currentKey,fromFavorites} = props;
   const [image, setImage] = useState(null)
     date = new Date(date);
     const dispatch = useDispatch()
@@ -31,27 +33,28 @@ const WeatherCard = (props)=>{
         }
     }
     fetchImage();
-    const test =async ()=>{
-        console.log("aaa",currentKey)
+    const handleClick =async ()=>{
         if(currentKey){
-            console.log(currentKey)
             dispatch(weatherActions.setKey(currentKey));
             dispatch(weatherActions.setCity(city))
             const res2 = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${currentKey}?apikey=${apiKey}&language=en-us&details=true`)
     const data2 =  await res2.json();
-    console.log("sss",data2[0]);
      dispatch(weatherActions.setCurrentWeather(data2[0]));
      const res = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${currentKey}?apikey=${apiKey}&language=en-us&details=false&metric=true`)
     const data =  await res.json();
-    console.log("sss2",data);
      dispatch(weatherActions.setWeatherOfTheWeek(data));
      navigate("/");
         }
     }
+    const handleRemove = ()=>{
+        console.log("in remove");
+        dispatch(weatherActions.removeFavorite(currentKey))
+    }
     return (
     <div className="WeatherCard">
        <Card sx={{ maxWidth: 245 }}>
-      <CardActionArea  onClick={test}>
+           {fromFavorites === true?<MdOutlineRemoveCircleOutline onClick={handleRemove} className="removeIcon" size= "2rem"/>:null}
+      <CardActionArea  onClick={handleClick}>
         <CardMedia className="WeatherCard"
           component="img"
           height="115"

@@ -7,11 +7,10 @@ const Input = (props)=>{
     const[cityArray,setCityArray] = useState([])
     const dispatch =  useDispatch()
         const changeInput = async(event)=>{
-            console.log(event.target.value)
+           
             const val = event.target.value
             const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${val}&language=en-us`)
            const data = await response.json();
-          // console.log("in auto",data)
            let cities = data.map((city)=>{
                 let fullName = city.LocalizedName + " (" +city.Country.ID + ")"
                return {lable:fullName ,id:city.Key}
@@ -27,11 +26,9 @@ const Input = (props)=>{
             dispatch(weatherActions.checkFavorite(id))
             const res2 = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=${apiKey}&language=en-us&details=true`)
     const data2 =  await res2.json();
-    console.log("sss",data2[0]);
      dispatch(weatherActions.setCurrentWeather(data2[0]));
      const res = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=${apiKey}&language=en-us&details=false&metric=true`)
     const data =  await res.json();
-    console.log("sss",data);
      dispatch(weatherActions.setWeatherOfTheWeek(data));
         }  
     return(

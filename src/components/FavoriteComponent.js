@@ -3,25 +3,26 @@ import { Button } from "react-bootstrap";
 import {AiFillHeart} from "react-icons/ai"; 
 import { useDispatch, useSelector } from "react-redux";
 import { weatherActions } from "../store/weatherSlice";
+
 import "./FavoriteComponent.css"
 const FavoriteComponent = (props)=>{
  
     let  {header,temperature,city,date,icon,currentKey,favorite} = props;
     const dispatch = useDispatch();
     const[iconState,setIconState] = useState(favorite)
-    // const favoriteArray = useSelector((state)=>{
-    //     return state.weather.favorites;
-    // })
+   
 
     const weather = useSelector((state)=>{
       return  state.weather.isFavorite;
     })
     const addToFavorite = (event)=>{
        
-        const obj = {header,temperature,city,date,icon,currentKey}
-        console.log("obj",obj);
+        const obj = {header,temperature,city,date,icon,currentKey,favorite}
+        
         if(iconState){
-
+                dispatch(weatherActions.removeFavorite(currentKey))
+                dispatch(weatherActions.changeFavorite(false))
+                //setIconState(false); 
         }
         else{
             dispatch(weatherActions.addToFavorites(obj))
@@ -33,8 +34,7 @@ const FavoriteComponent = (props)=>{
 
 
     }
-    console.log(favorite)
-    console.log(iconState)
+   
     useEffect(()=>{
         setIconState(favorite)
     },[favorite])

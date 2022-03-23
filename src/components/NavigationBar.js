@@ -3,7 +3,6 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './NavigationBar.css'
 const NavigationBar = ()=>{
-console.log("a")
 return(
     <Navbar collapseOnSelect expand="lg" className="navbar-custom">
   <Container>

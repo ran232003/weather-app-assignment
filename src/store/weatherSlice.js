@@ -21,7 +21,6 @@ const weatherSlice = createSlice({
             state.currentKey =action.payload;
         },
         changeFavorite(state,action){
-            console.log("in slice",action.payload)
             state.isFavorite = action.payload;
         },
         checkFavorite(state,action){
@@ -29,13 +28,18 @@ const weatherSlice = createSlice({
               return  fav.currentKey === action.payload
             })
             if(obj){
-                console.log("in card if",obj)
                 state.isFavorite = true
             }
             else{
                 state.isFavorite = false
-                console.log("in card if",obj)
             }
+        },
+        removeFavorite(state,action){
+            const newFavorites = state.favorites.filter((fav)=>{
+                return fav.currentKey !== action.payload;
+               
+            })
+            state.favorites = newFavorites;
         }
         
     }
