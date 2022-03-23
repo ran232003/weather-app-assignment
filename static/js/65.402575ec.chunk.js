@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app_assignment=self.webpackChunkweather_app_assignment||[]).push([[65],{6065:function(e,a,s){e.exports=s.p+"static/media/35.a2e271ae07438edb883e.svg"}}]);
